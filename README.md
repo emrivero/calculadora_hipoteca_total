@@ -77,11 +77,11 @@ Precio 255.000 €, efectivo 58.000 €, comisión 4 %, IVA de comisión 21 %, I
 
 ## GitHub Pages
 
-1. Sube estos archivos y `package-lock.json` a un repositorio de GitHub en la rama `main`.
+1. Sube estos archivos y `package-lock.json` a la rama predeterminada del repositorio (`master` en este proyecto; también se admite `main`).
 2. En **Settings → Pages → Build and deployment → Source**, selecciona **GitHub Actions**.
-3. Ejecuta el workflow «Validate and deploy to GitHub Pages» o envía un cambio a `main`.
+3. Ejecuta el workflow «Validate and deploy to GitHub Pages» seleccionando esa rama, o envía un cambio a ella.
 
-El workflow instala con `npm ci`, verifica TypeScript y lint, ejecuta tests, compila, sube `dist/` y lo publica. Las pull requests ejecutan las mismas comprobaciones sin publicar. La URL se muestra en el entorno `github-pages` del workflow.
+El workflow instala con `npm ci`, verifica TypeScript y lint, ejecuta tests, compila, sube `dist/` y lo publica. Se activa para cambios en `main` o `master`, pero solo publica desde la rama predeterminada del repositorio y después de que las comprobaciones terminen correctamente. Las pull requests ejecutan las mismas comprobaciones sin publicar. La URL se muestra en el entorno `github-pages` del workflow.
 
 Vite usa `base: './'`: los recursos se resuelven respecto a `index.html`, por lo que funciona tanto en `https://usuario.github.io/repositorio/` como en la raíz de un dominio. No hay rutas de cliente: la navegación utiliza anclas. El icono también respeta la base. Si necesitas una base absoluta, puedes usar:
 
